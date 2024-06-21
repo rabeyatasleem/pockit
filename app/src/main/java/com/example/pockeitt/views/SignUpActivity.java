@@ -1,4 +1,4 @@
-package com.example.pockeitt;
+package com.example.pockeitt.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class SignUp extends AppCompatActivity {
+import com.example.pockeitt.R;
+
+public class SignUpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class SignUp extends AppCompatActivity {
         });
 
         login_text.setOnClickListener(v -> {
-            Intent i = new Intent(SignUp.this, Login.class);
+            Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
             startActivity(i);
             finish();
         });

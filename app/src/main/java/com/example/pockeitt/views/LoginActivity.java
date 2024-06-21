@@ -1,7 +1,8 @@
-package com.example.pockeitt;
+package com.example.pockeitt.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.pockeitt.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -18,11 +20,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     TextView create_acc;
     FirebaseAuth mauth;
     FirebaseDatabase database;
-    Button button;
+    Button google_btn;
     GoogleSignInClient gsc;
     GoogleSignInOptions gso;
     @Override
@@ -31,7 +33,7 @@ public class Login extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
         create_acc = findViewById(R.id.create_acc);
-        button = findViewById(R.id.button);
+        google_btn = findViewById(R.id.button);
 
         mauth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -40,8 +42,15 @@ public class Login extends AppCompatActivity {
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
-
+            navigateToSecondActivity();
         }
+
+        google_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+        });
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -51,10 +60,19 @@ public class Login extends AppCompatActivity {
         });
 
         create_acc.setOnClickListener(v -> {
-            Intent i = new Intent(Login.this, SignUp.class);
+            Intent i = new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(i);
             finish();
         });
+    }
+
+    private void signIn() {
+    }
+
+    private void navigateToSecondActivity() {
+        finish();
+        Intent intent = new Intent(LoginActivity.this, BudgetCurrencyActivity.class);
+        startActivity(intent);
     }
 
 }

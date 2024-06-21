@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".budgetCurrency"
+    tools:context=".views.BudgetCurrencyActivity"
     android:background="@color/white">
 
     <ImageView
@@ -61,7 +61,7 @@
         app:boxCornerRadiusBottomEnd="30dp"
         app:boxCornerRadiusTopStart="30dp"
         app:boxCornerRadiusTopEnd="30dp"
-
+        app:boxStrokeColor="@color/green"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
 
@@ -88,6 +88,7 @@
         app:boxCornerRadiusBottomEnd="30dp"
         app:boxCornerRadiusTopStart="30dp"
         app:boxCornerRadiusTopEnd="30dp"
+        app:boxStrokeColor="@color/green"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
         <AutoCompleteTextView
@@ -113,6 +114,7 @@
         app:boxCornerRadiusBottomEnd="30dp"
         app:boxCornerRadiusTopStart="30dp"
         app:boxCornerRadiusTopEnd="30dp"
+        app:boxStrokeColor="@color/green"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
         <AutoCompleteTextView
