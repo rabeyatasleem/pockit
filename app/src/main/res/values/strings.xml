@@ -3,10 +3,13 @@
     <string name="heading">Pockit</string>
     <string name="splash_screen">Premium Budget Manager</string>
     <string name="signup">Sign up to continue</string>
+    <string name="login_continue">Login to continue</string>
     <string name="continue_google">Continue with Google</string>
     <string name="continue_apple">Continue with Apple</string>
     <string name="dont_have_account">Don\'t have an account?</string>
     <string name="create_acc">Create Account</string>
     <string name="login">Login</string>
     <string name="already_acc">Already have an account?</string>
+    <string name="budget_heading">Budget Currency</string>
+    <string name="us_dollar_usd">US Dollar - USD</string>
 </resources>
