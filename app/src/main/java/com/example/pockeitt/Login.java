@@ -40,10 +40,8 @@ public class Login extends AppCompatActivity {
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
-            navigateToSecondActivity();
-        }
 
-        button.setOnClickListener();
+        }
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
