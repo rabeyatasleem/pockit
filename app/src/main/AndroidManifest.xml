@@ -11,9 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pockeitt"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        tools:replace="android:appComponentFactory"
+        android:appComponentFactory="android.support.v4.app.CoreComponentFactory">
         <activity
-            android:name=".views.BudgetCurrencyActivity"
+            android:name=".views.SecuritypinActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +24,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.LoginActivity"
+            android:name=".views.BudgetCurrencyActivity"
             android:exported="true">
-
         </activity>
         <activity
+            android:name=".views.LoginActivity"
+            android:exported="true" />
+        <activity
             android:name=".views.SignUpActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".views.SplashActivity"
             android:exported="true">

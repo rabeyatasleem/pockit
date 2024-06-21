@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textView"
@@ -60,6 +61,8 @@
         app:boxCornerRadiusBottomEnd="30dp"
         app:boxCornerRadiusTopStart="30dp"
         app:boxCornerRadiusTopEnd="30dp"
+        app:placeholderText="@string/us_dollar_usd"
+        android:hint="@string/currency"
         app:boxStrokeColor="@color/green"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
@@ -68,18 +71,17 @@
             android:id="@+id/designspinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-        android:hint="@string/us_dollar_usd"
             android:inputType="none" />
-
-
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textfield2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="123,455"
+        android:hint="@string/number_format"
+        app:placeholderText="@string/before_amount_12_345"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textfield"
@@ -105,7 +107,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Before Amount ($12,345)"
+        app:placeholderText="@string/before_amount_12_345"
+        android:hint="@string/currency_placement"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textfield2"

@@ -12,4 +12,11 @@
     <string name="already_acc">Already have an account?</string>
     <string name="budget_heading">Budget Currency</string>
     <string name="us_dollar_usd">US Dollar - USD</string>
+    <string name="currency">Currency</string>
+    <string name="_123_455">123,455</string>
+    <string name="before_amount_12_345">Before Amount ($12,345)</string>
+    <string name="currency_placement">Currency Placement</string>
+    <string name="number_format">Number Format</string>
+    <string name="security_heading">Set your security PIN</string>
+    <string name="forgot_pin">Forgot PIN?</string>
 </resources>
