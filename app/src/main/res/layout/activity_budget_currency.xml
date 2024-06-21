@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".budgetCurrency">
+    tools:context=".budgetCurrency"
+    android:background="@color/white">
 
     <ImageView
         android:layout_width="fill_parent"
@@ -47,6 +48,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textfield"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="168dp"
@@ -54,14 +56,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintWidth_percent="0.7"
         app:boxCornerRadiusBottomStart="30dp"
         app:boxCornerRadiusBottomEnd="30dp"
         app:boxCornerRadiusTopStart="30dp"
         app:boxCornerRadiusTopEnd="30dp"
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
-        <AutoCompleteTextView
+
+    <AutoCompleteTextView
             android:id="@+id/designspinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -69,6 +73,70 @@
 
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textfield2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="123,455"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textfield"
+        app:layout_constraintWidth_percent="0.7"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+        <AutoCompleteTextView
+            android:id="@+id/designspinner2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textfield3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Before Amount ($12,345)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textfield2"
+        app:layout_constraintWidth_percent="0.7"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+        <AutoCompleteTextView
+            android:id="@+id/designspinner3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textfield3"
+        app:layout_constraintWidth_percent="0.7"
+        android:backgroundTint="@color/green"
+        android:text="Continue"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,6 @@ package com.example.pockeitt;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -12,7 +11,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,6 +24,7 @@ public class Login extends AppCompatActivity {
     FirebaseDatabase database;
     Button button;
     GoogleSignInClient gsc;
+    GoogleSignInOptions gso;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +35,15 @@ public class Login extends AppCompatActivity {
 
         mauth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gsc = GoogleSignIn.getClient(this, gso);
 
-
-        if (mauth.getCurrentUser() != null) {
-            //user already signed in
-            Log.d("AUTH", mauth.getCurrentUser().getEmail());
-
-        } else {
-
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (acct != null) {
+            navigateToSecondActivity();
         }
+
+        button.setOnClickListener();
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
