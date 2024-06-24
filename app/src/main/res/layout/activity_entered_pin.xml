@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/poppins"
-        android:text="@string/entered_pin"
+        android:text="@string/security_heading"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="23sp"

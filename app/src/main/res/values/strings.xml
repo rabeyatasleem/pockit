@@ -19,4 +19,5 @@
     <string name="number_format">Number Format</string>
     <string name="security_heading">Set your security PIN</string>
     <string name="forgot_pin">Forgot PIN?</string>
+    <string name="entered_pin">Enter your security PIN</string>
 </resources>

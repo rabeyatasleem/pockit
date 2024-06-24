@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     GoogleSignInClient gsc;
     GoogleSignInOptions gso;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,17 @@ public class LoginActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(this, gso);
+
+//        Intent i;
+//        if(isFirstTime()){
+//            i = new Intent(LoginActivity.this, SecuritypinActivity.class);
+//
+//        }else{
+//            i = new Intent(LoginActivity.this, EnteredPinActivity.class);
+//
+//        }
+//        startActivity(i);
+//        finish();
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
@@ -64,11 +76,17 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         create_acc.setOnClickListener(v -> {
-            Intent i = new Intent(LoginActivity.this, SignUpActivity.class);
-            startActivity(i);
+            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
             finish();
         });
     }
+
+
+//    private boolean isFirstTime() {
+//
+//        return false;
+//    }
 
     private void signIn() {
         Intent signInIntent = gsc.getSignInIntent();
