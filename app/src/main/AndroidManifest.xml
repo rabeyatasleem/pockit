@@ -11,13 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pockeitt"
-        tools:targetApi="31"
-        tools:replace="android:appComponentFactory"
-        android:appComponentFactory="android.support.v4.app.CoreComponentFactory">
+        tools:targetApi="31">
+        <!--        tools:replace="android:appComponentFactory"-->
+        <!--        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"-->
 
-        <activity
-            android:name=".views.EnteredPinActivity"
-            android:exported="false" />
         <activity
             android:name=".views.SecuritypinActivity"
             android:exported="true" />
@@ -27,11 +24,7 @@
         <activity
             android:name=".views.LoginActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".views.SignUpActivity"
@@ -42,7 +35,13 @@
         </activity>
         <activity
             android:name=".views.MainActivity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"
