@@ -15,7 +15,6 @@ import com.example.pockeitt.R;
 public class SecuritypinActivity extends AppCompatActivity {
     EditText pinEntry;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
