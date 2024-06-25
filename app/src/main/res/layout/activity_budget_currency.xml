@@ -8,7 +8,8 @@
     tools:context=".views.BudgetCurrencyActivity"
     android:background="@color/white">
 
-    <ImageView
+
+<ImageView
         android:layout_width="fill_parent"
         android:layout_height="400dp"
         android:background="@drawable/circle"
