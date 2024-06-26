@@ -5,11 +5,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.BudgetCurrencyActivity"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".views.BudgetCurrencyActivity">
 
 
-<ImageView
+    <ImageView
         android:layout_width="fill_parent"
         android:layout_height="400dp"
         android:background="@drawable/circle"
@@ -51,24 +51,24 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textfield"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="168dp"
+        android:hint="@string/currency"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxStrokeColor="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintWidth_percent="0.7"
-        app:boxCornerRadiusBottomStart="30dp"
-        app:boxCornerRadiusBottomEnd="30dp"
-        app:boxCornerRadiusTopStart="30dp"
-        app:boxCornerRadiusTopEnd="30dp"
-        app:placeholderText="@string/us_dollar_usd"
-        android:hint="@string/currency"
-        app:boxStrokeColor="@color/green"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        app:placeholderText="@string/us_dollar_usd">
 
 
-    <AutoCompleteTextView
+        <AutoCompleteTextView
             android:id="@+id/designspinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -78,21 +78,21 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textfield2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="@string/number_format"
-        app:placeholderText="@string/before_amount_12_345"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxStrokeColor="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textfield"
         app:layout_constraintWidth_percent="0.7"
-        app:boxCornerRadiusBottomStart="30dp"
-        app:boxCornerRadiusBottomEnd="30dp"
-        app:boxCornerRadiusTopStart="30dp"
-        app:boxCornerRadiusTopEnd="30dp"
-        app:boxStrokeColor="@color/green"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        app:placeholderText="@string/before_amount_12_345">
 
         <AutoCompleteTextView
             android:id="@+id/designspinner2"
@@ -105,21 +105,21 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textfield3"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        app:placeholderText="@string/before_amount_12_345"
         android:hint="@string/currency_placement"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxStrokeColor="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textfield2"
         app:layout_constraintWidth_percent="0.7"
-        app:boxCornerRadiusBottomStart="30dp"
-        app:boxCornerRadiusBottomEnd="30dp"
-        app:boxCornerRadiusTopStart="30dp"
-        app:boxCornerRadiusTopEnd="30dp"
-        app:boxStrokeColor="@color/green"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        app:placeholderText="@string/before_amount_12_345">
 
         <AutoCompleteTextView
             android:id="@+id/designspinner3"
@@ -135,14 +135,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:backgroundTint="@color/green"
+        android:fontFamily="@font/poppins"
+        android:text="Continue"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textfield3"
-        app:layout_constraintWidth_percent="0.7"
-        android:backgroundTint="@color/green"
-        android:text="Continue"
-        android:textAlignment="center"
-        android:fontFamily="@font/poppins" />
+        app:layout_constraintWidth_percent="0.7" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

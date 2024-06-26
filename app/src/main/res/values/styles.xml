@@ -1,0 +1,9 @@
+<resources>
+
+    <style name="CustomTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxStrokeColor">@android:color/white</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="hintTextColor">@color/white</item>
+        <item name="boxBackgroundMode">outline</item>
+    </style>
+</resources>

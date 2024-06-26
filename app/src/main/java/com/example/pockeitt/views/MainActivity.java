@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         ConstraintLayout sheet = findViewById(R.id.bottomsheet);
         bottomSheetBehavior = BottomSheetBehavior.from(sheet);
 
-        bottomSheetBehavior.setPeekHeight(200);
+        bottomSheetBehavior.setPeekHeight(600);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
 
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListViewSample);
