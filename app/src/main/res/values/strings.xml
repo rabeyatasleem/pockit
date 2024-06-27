@@ -26,4 +26,6 @@
     <string name="bills">Bills</string>
     <string name="weekly">Weekly</string>
     <string name="monthly">Monthly</string>
+    <string name="swipe_up_to_add_or">Swipe up to Add or</string>
+    <string name="add_bills_here">Add Bills here</string>
 </resources>
