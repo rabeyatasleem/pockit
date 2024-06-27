@@ -63,7 +63,6 @@
         app:layout_constraintWidth_percent="0.7"
         app:placeholderText="@string/bills">
 
-
         <AutoCompleteTextView
             android:id="@+id/designspinner"
             android:layout_width="match_parent"

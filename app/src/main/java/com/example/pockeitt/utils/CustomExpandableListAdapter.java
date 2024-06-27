@@ -1,7 +1,10 @@
 package com.example.pockeitt.utils;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,7 @@ import android.widget.TextView;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.example.pockeitt.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,15 +26,18 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     private List<String> expandableListTitle;
     private HashMap<String, List<String>> expandableListDetail;
 
+
     public CustomExpandableListAdapter(Context context, List<String> expandableListTitle, HashMap<String, List<String>> expandableListDetail) {
         this.context = context;
         this.expandableListTitle = expandableListTitle;
         this.expandableListDetail = expandableListDetail;
+
     }
 
     @Override
     public Object getChild(int listPosition, int expandedListPosition) {
         return Objects.requireNonNull(this.expandableListDetail.get(this.expandableListTitle.get(listPosition))).get(expandedListPosition);
+
     }
 
     @Override
@@ -40,20 +47,41 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int listPosition, final int expandedListPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+
         final String expandedListText = (String) getChild(listPosition, expandedListPosition);
+
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_item, null);
         }
-//        String child = (String) getChild(listPosition,expandedListPosition);
-//        TextView add_bills = (TextView) convertView.findViewById(R.id.textView2);
-//        add_bills.setText(child);
-
         TextView expandedListTextView = convertView.findViewById(R.id.expandedListItem);
+
+        String key = expandableListTitle.get(listPosition);
+        // Get the list associated with the key from expandableListDetail
+        List<String> list = expandableListDetail.get(key);
+
         expandedListTextView.setText(expandedListText);
+
+        //TODO : Open Bottom Sheet
+        if (expandedListText.contains("here")) {
+
+            Log.d(TAG, "getChildView: ");
+            convertView.setOnClickListener(v -> {
+
+
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+                View bottomSheetView = LayoutInflater.from(context).inflate(R.layout.bottomsheet, parent, false);
+                bottomSheetDialog.setContentView(bottomSheetView);
+                bottomSheetDialog.show();
+
+//                Toast.makeText(context, "You can add item now", Toast.LENGTH_SHORT).show();
+
+            });
+        }
         Typeface typeface = ResourcesCompat.getFont(context, R.font.poppins);
         expandedListTextView.setTypeface(typeface);
         return convertView;
+
     }
 
     @Override
@@ -100,4 +128,6 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int listPosition, int expandedListPosition) {
         return true;
     }
+
+
 }
