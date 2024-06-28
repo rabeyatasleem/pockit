@@ -3,11 +3,14 @@ package com.example.pockeitt.views;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -35,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
     List<String> expandableListTitle;
     HashMap<String, List<String>> expandableListDetail;
     private BottomSheetBehavior<ConstraintLayout> bottomSheetBehavior;
-    Button button1, button2;
+    Button btnWeekly, btnMonthly;
+    ConstraintLayout btnRepeat;
+    ImageView imgRepeat;
+    TextView textRepeat;
 
     @SuppressLint({"MissingInflatedId"})
     @Override
@@ -44,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-
+        imgRepeat = findViewById(R.id.repeat_circle);
+        textRepeat = findViewById(R.id.textView2);
+        btnRepeat = findViewById(R.id.mainlayout);
         ConstraintLayout sheet = findViewById(R.id.bottomsheet);
         bottomSheetBehavior = BottomSheetBehavior.from(sheet);
         bottomSheetBehavior.setPeekHeight(600);
@@ -55,12 +63,45 @@ public class MainActivity extends AppCompatActivity {
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
-        button1 = findViewById(R.id.button_weekly);
-        button2 = findViewById(R.id.button_monthly);
+        btnWeekly = findViewById(R.id.button_weekly);
+        btnMonthly = findViewById(R.id.button_monthly);
 
-        button1.setOnClickListener(v -> {
-
+        btnMonthly.setOnClickListener(v -> {
+            if (btnMonthly.isEnabled()) {
+                btnMonthly.setEnabled(false);
+                btnWeekly.setEnabled(true);
+                btnMonthly.setBackgroundColor(getResources().getColor(R.color.white));
+                btnWeekly.setBackgroundColor(getResources().getColor(R.color.green));
+                imgRepeat.setColorFilter(Color.GREEN);
+                imgRepeat.setBackgroundColor(getResources().getColor(R.color.green));
+                Toast.makeText(this, "Month Selected", Toast.LENGTH_SHORT).show();
+            }
         });
+
+        btnWeekly.setOnClickListener(v -> {
+            if (btnWeekly.isEnabled()) {
+                btnWeekly.setEnabled(false);
+                btnMonthly.setEnabled(true);
+                btnWeekly.setBackgroundColor(getResources().getColor(R.color.white));
+                btnMonthly.setBackgroundColor(getResources().getColor(R.color.green));
+//                imgRepeat.setColorFilter(Color.GREEN);
+//                imgRepeat.setBackgroundColor(getResources().getColor(R.color.green));
+//                DrawableCompat.setTint(imgRepeat.getDrawable(),ContextCompat.getColor(getApplicationContext(), R.color.green));
+                Toast.makeText(this, "Week Selected", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+////        btnRepeat.setOnClickListener(v -> {
+//
+//            if (btnWeekly.isEnabled() || btnMonthly.isEnabled()) {
+//                imgRepeat.setImageResource(R.color.black);
+//                textRepeat.setTextColor(Color.BLACK);
+//            } else{
+//                imgRepeat.setBackgroundColor(Color.GRAY);
+//                textRepeat.setTextColor(Color.GRAY);
+//            }
+//        });
+
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
             @Override
@@ -69,22 +110,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        expandableListView.setOnGroupCollapseListener(groupPosition -> Toast.makeText(getApplicationContext(),
-                expandableListTitle.get(groupPosition) + " List Collapsed.",
-                Toast.LENGTH_SHORT).show());
+        expandableListView.setOnGroupCollapseListener(groupPosition -> Toast.makeText(getApplicationContext(), expandableListTitle.get(groupPosition) + " List Collapsed.", Toast.LENGTH_SHORT).show());
 
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        expandableListTitle.get(groupPosition)
-                                + " -> "
-                                + expandableListDetail.get(
-                                expandableListTitle.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT
-                ).show();
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                Toast.makeText(getApplicationContext(), expandableListTitle.get(groupPosition) + " -> " + expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
@@ -97,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
             dateButton = findViewById(R.id.calender_btn);
             dateButton.setText(getTodaysDate());
             return insets;
-
 
         });
     }
@@ -167,7 +197,4 @@ public class MainActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    public void chooseOption() {
-
-    }
 }

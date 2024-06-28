@@ -29,4 +29,7 @@
     <string name="swipe_up_to_add_or">Swipe up to Add or</string>
     <string name="add_bills_here">Add Bills here</string>
     <string name="_123">$123</string>
+    <string name="category">Category</string>
+    <string name="date">Date</string>
+    <string name="notes">Notes</string>
 </resources>

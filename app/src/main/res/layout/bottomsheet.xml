@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottomsheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,16 +9,15 @@
 
     <FrameLayout
         android:id="@+id/sheet"
-        android:layout_width="0dp"
-        android:layout_height="400dp"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
         android:background="@drawable/rounded"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintWidth_percent="0.9">
+        app:layout_constraintVertical_bias="1.0">
 
         <ImageView
             android:id="@+id/line"
@@ -36,8 +36,8 @@
         android:fontFamily="@font/poppins"
         android:text="@string/_0_00"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textColor="@color/green"
+        android:textSize="41sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
@@ -49,14 +49,16 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:hint="Category"
+        android:layout_marginTop="80dp"
+        android:hint="@string/category"
+        android:textSize="16sp"
         app:boxBackgroundColor="@color/white"
         app:boxCornerRadiusBottomEnd="30dp"
         app:boxCornerRadiusBottomStart="30dp"
         app:boxCornerRadiusTopEnd="30dp"
         app:boxCornerRadiusTopStart="30dp"
         app:boxStrokeColor="@color/white"
+        app:errorTextAppearance="@style/CustomTextInputLayoutHintStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView"
@@ -76,13 +78,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:hint="Date"
+        android:hint="@string/date"
         app:boxBackgroundColor="@color/white"
         app:boxCornerRadiusBottomEnd="30dp"
         app:boxCornerRadiusBottomStart="30dp"
         app:boxCornerRadiusTopEnd="30dp"
         app:boxCornerRadiusTopStart="30dp"
         app:boxStrokeColor="@color/white"
+        app:errorTextAppearance="@style/CustomTextInputLayoutHintStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textfield"
@@ -102,13 +105,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:hint="Notes"
+        android:hint="@string/notes"
         app:boxBackgroundColor="@color/white"
         app:boxCornerRadiusBottomEnd="30dp"
         app:boxCornerRadiusBottomStart="30dp"
         app:boxCornerRadiusTopEnd="30dp"
         app:boxCornerRadiusTopStart="30dp"
         app:boxStrokeColor="@color/white"
+        app:errorTextAppearance="@style/CustomTextInputLayoutHintStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textfield2"
@@ -123,15 +127,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        android:layout_marginTop="570dp">-->
-
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -142,51 +137,67 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textfield3">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainlayout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:gravity="center">
 
             <ImageView
+                android:id="@+id/repeat_circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/recycle_line" />
+                android:background="@drawable/repeat_circle"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/repeat_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/loop_left_line"
+                app:layout_constraintBottom_toBottomOf="@id/repeat_circle"
+                app:layout_constraintEnd_toEndOf="@id/repeat_circle"
+                app:layout_constraintStart_toStartOf="@id/repeat_circle"
+                app:layout_constraintTop_toTopOf="@id/repeat_circle" />
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                app:layout_constraintWidth_percent="0.7"
+                android:layout_marginLeft="9dp"
                 android:fontFamily="@font/poppins"
                 android:text="@string/repeat_payments"
                 android:textAlignment="textStart"
-                android:textColor="@color/grey"
-                android:textSize="12sp" />
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                app:layout_constraintTop_toTopOf="@id/repeat_circle"
+                app:layout_constraintBottom_toBottomOf="@+id/repeat_circle"
+                app:layout_constraintStart_toEndOf="@id/repeat_circle" />
 
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_weekly"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
             android:text="@string/weekly"
             android:textColor="@android:color/black"
-            android:textSize="7.5sp"
-            app:backgroundTint="@color/white" />
+            android:textSize="11sp"
+            app:backgroundTint="@color/green" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_monthly"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/rounded_background"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="2dp"
             android:text="@string/monthly"
             android:textColor="@color/black"
-            android:textSize="7.5sp"
+            android:textSize="11sp"
             app:backgroundTint="@color/green"
-            app:strokeColor="@color/green"
-            app:strokeWidth="1dp" />
+            app:strokeColor="@color/green" />
     </LinearLayout>
 
 
