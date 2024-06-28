@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         button2 = findViewById(R.id.button_monthly);
 
         button1.setOnClickListener(v -> {
-            chooseOption();
+
         });
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
