@@ -32,4 +32,6 @@
     <string name="category">Category</string>
     <string name="date">Date</string>
     <string name="notes">Notes</string>
+    <string name="expense_name">Expense Name</string>
+    <string name="name">Name</string>
 </resources>

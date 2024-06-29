@@ -3,9 +3,9 @@ package com.example.pockeitt.views;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -24,6 +24,7 @@ import com.example.pockeitt.R;
 import com.example.pockeitt.utils.CustomExpandableListAdapter;
 import com.example.pockeitt.utils.ExpandableListDataPump;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -50,13 +51,14 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        imgRepeat = findViewById(R.id.repeat_circle);
-        textRepeat = findViewById(R.id.textView2);
-        btnRepeat = findViewById(R.id.mainlayout);
         ConstraintLayout sheet = findViewById(R.id.bottomsheet);
         bottomSheetBehavior = BottomSheetBehavior.from(sheet);
         bottomSheetBehavior.setPeekHeight(600);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        imgRepeat = findViewById(R.id.repeat_circle);
+        textRepeat = findViewById(R.id.textView2);
+        btnRepeat = findViewById(R.id.mainlayout);
+
 
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListViewSample);
         expandableListDetail = ExpandableListDataPump.getData();
@@ -66,14 +68,21 @@ public class MainActivity extends AppCompatActivity {
         btnWeekly = findViewById(R.id.button_weekly);
         btnMonthly = findViewById(R.id.button_monthly);
 
+        findViewById(R.id.bottomsheet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showBottomSheetDialog();
+
+            }
+        });
+
         btnMonthly.setOnClickListener(v -> {
             if (btnMonthly.isEnabled()) {
                 btnMonthly.setEnabled(false);
                 btnWeekly.setEnabled(true);
                 btnMonthly.setBackgroundColor(getResources().getColor(R.color.white));
                 btnWeekly.setBackgroundColor(getResources().getColor(R.color.green));
-                imgRepeat.setColorFilter(Color.GREEN);
-                imgRepeat.setBackgroundColor(getResources().getColor(R.color.green));
+                imgRepeat.setImageResource(R.drawable.repeat_circle_greeen);
                 Toast.makeText(this, "Month Selected", Toast.LENGTH_SHORT).show();
             }
         });
@@ -84,23 +93,10 @@ public class MainActivity extends AppCompatActivity {
                 btnMonthly.setEnabled(true);
                 btnWeekly.setBackgroundColor(getResources().getColor(R.color.white));
                 btnMonthly.setBackgroundColor(getResources().getColor(R.color.green));
-//                imgRepeat.setColorFilter(Color.GREEN);
-//                imgRepeat.setBackgroundColor(getResources().getColor(R.color.green));
-//                DrawableCompat.setTint(imgRepeat.getDrawable(),ContextCompat.getColor(getApplicationContext(), R.color.green));
+                imgRepeat.setImageResource(R.drawable.repeat_circle_greeen);
                 Toast.makeText(this, "Week Selected", Toast.LENGTH_SHORT).show();
             }
         });
-
-////        btnRepeat.setOnClickListener(v -> {
-//
-//            if (btnWeekly.isEnabled() || btnMonthly.isEnabled()) {
-//                imgRepeat.setImageResource(R.color.black);
-//                textRepeat.setTextColor(Color.BLACK);
-//            } else{
-//                imgRepeat.setBackgroundColor(Color.GRAY);
-//                textRepeat.setTextColor(Color.GRAY);
-//            }
-//        });
 
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
@@ -197,4 +193,11 @@ public class MainActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
+    private void showBottomSheetDialog() {
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        bottomSheetDialog.setContentView(R.layout.bottomsheet);
+
+        bottomSheetDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        bottomSheetDialog.show();
+    }
 }

@@ -10,7 +10,7 @@
     <FrameLayout
         android:id="@+id/sheet"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="470dp"
         android:background="@drawable/rounded"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,21 +28,54 @@
             android:scaleType="centerCrop" />
     </FrameLayout>
 
-    <TextView
+    <EditText
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        app:layout_constraintWidth_percent="0.3"
         android:fontFamily="@font/poppins"
-        android:text="@string/_0_00"
+        android:hint="$0.00"
+        android:paddingTop="15dp"
+        android:textColorHint="@color/green"
         android:textAlignment="center"
-        android:textColor="@color/green"
         android:textSize="41sp"
         android:textStyle="bold"
+        android:background="@null"
+        android:inputType="number"
+        android:textColor="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/sheet" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/expense_textfield"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:hint="@string/name"
+        android:textSize="16sp"
+        app:boxBackgroundColor="@color/white"
+        app:boxCornerRadiusBottomEnd="30dp"
+        app:boxCornerRadiusBottomStart="30dp"
+        app:boxCornerRadiusTopEnd="30dp"
+        app:boxCornerRadiusTopStart="30dp"
+        app:boxStrokeColor="@color/white"
+        app:errorTextAppearance="@style/CustomTextInputLayoutHintStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/textfield"
+        app:layout_constraintWidth_percent="0.86"
+        app:placeholderText="@string/expense_name">
+
+        <AutoCompleteTextView
+            android:id="@+id/expense_designspinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textfield"
@@ -61,8 +94,8 @@
         app:errorTextAppearance="@style/CustomTextInputLayoutHintStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView"
-        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintTop_toTopOf="@+id/expense_textfield"
+        app:layout_constraintWidth_percent="0.86"
         app:placeholderText="@string/bills">
 
         <AutoCompleteTextView
@@ -89,7 +122,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textfield"
-        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintWidth_percent="0.86"
         app:placeholderText="9 June 2024">
 
         <AutoCompleteTextView
@@ -116,7 +149,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textfield2"
-        app:layout_constraintWidth_percent="0.7"
+        app:layout_constraintWidth_percent="0.86"
         app:placeholderText="@string/write_notes_here">
 
         <AutoCompleteTextView
@@ -126,12 +159,13 @@
             android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
         android:gravity="center"
+        app:layout_constraintWidth_percent="0.86"
+
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -148,6 +182,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/repeat_circle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints" />
 
             <ImageView
@@ -164,13 +200,13 @@
                 android:id="@+id/textView2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintWidth_percent="0.7"
-                android:layout_marginLeft="9dp"
+                android:layout_marginLeft="4dp"
                 android:fontFamily="@font/poppins"
                 android:text="@string/repeat_payments"
                 android:textAlignment="textStart"
                 android:textColor="@color/blue"
                 android:textSize="15sp"
+                android:lineSpacingExtra="-2sp"
                 app:layout_constraintTop_toTopOf="@id/repeat_circle"
                 app:layout_constraintBottom_toBottomOf="@+id/repeat_circle"
                 app:layout_constraintStart_toEndOf="@id/repeat_circle" />
@@ -179,8 +215,8 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_weekly"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="5dp"
             android:text="@string/weekly"
@@ -190,8 +226,8 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_monthly"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
             android:layout_marginStart="2dp"
             android:text="@string/monthly"
             android:textColor="@color/black"
@@ -199,6 +235,5 @@
             app:backgroundTint="@color/green"
             app:strokeColor="@color/green" />
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
