@@ -73,19 +73,6 @@ public class MainActivity extends AppCompatActivity {
         btnMonthly = findViewById(R.id.button_monthly);
 
 
-//        EmojiPopup emojiPopup = EmojiPopup.Builder.fromRootView(findViewById(R.id.main)).build(expenseDesignSpinner);
-//
-//        expenseDesignSpinner.setOnTouchListener((v, event) -> {
-//            final int DRAWABLE_RIGHT = 2;
-//            if (event.getAction() == MotionEvent.ACTION_UP) {
-//                if (event.getRawX() >= (expenseDesignSpinner.getRight() - expenseDesignSpinner.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-//                    showEmojiKeyboard();
-//                    return true;
-//                }
-//            }
-//            return false;
-//        });
-
 
         btnMonthly.setOnClickListener(v -> {
             if (btnMonthly.isEnabled()) {
