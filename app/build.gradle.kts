@@ -58,4 +58,11 @@ dependencies {
 
     implementation("com.alimuzaffar.lib:pinentryedittext:1.3.10")
     implementation("androidx.multidex:multidex:2.0.1")
+
+    //emoji
+//    implementation("com.android.support:support-emoji:28.0.0")
+//    implementation("com.vanniktech:emoji-google:0.15.0")
+//    implementation ("com.vanniktech:emoji-google:0.8.0")
+
+
 }

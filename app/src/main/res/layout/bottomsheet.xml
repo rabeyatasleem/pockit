@@ -32,24 +32,24 @@
         android:id="@+id/amount_edit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent="0.4"
+        android:background="@null"
         android:fontFamily="@font/poppins"
         android:hint="$0.00"
+        android:inputType="number"
         android:paddingTop="15dp"
-        android:textColorHint="@color/green"
         android:textAlignment="center"
+        android:textColor="@color/green"
+        android:textColorHint="@color/green"
         android:textSize="41sp"
         android:textStyle="bold"
-        android:background="@null"
-        android:inputType="number"
-        android:textColor="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sheet" />
+        app:layout_constraintTop_toTopOf="@+id/sheet"
+        app:layout_constraintWidth_percent="0.4" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/expense_textfield"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -62,20 +62,23 @@
         app:boxCornerRadiusTopStart="30dp"
         app:boxStrokeColor="@color/white"
         app:errorTextAppearance="@style/CustomTextInputLayoutHintStyle"
+        app:layout_constraintBottom_toTopOf="@+id/textfield"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/amount_edit"
-        app:layout_constraintBottom_toTopOf="@+id/textfield"
         app:layout_constraintWidth_percent="0.86"
         app:placeholderText="@string/expense_name">
 
-        <AutoCompleteTextView
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/expense_designspinner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="none" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:drawableEnd="@drawable/vector"
+            android:inputType="textMultiLine|textShortMessage"
+            android:padding="15dp" />
 
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textfield"
@@ -136,7 +139,7 @@
         android:id="@+id/textfield3"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:hint="@string/notes"
         app:boxBackgroundColor="@color/white"
@@ -152,25 +155,27 @@
         app:layout_constraintWidth_percent="0.86"
         app:placeholderText="@string/write_notes_here">
 
-        <AutoCompleteTextView
-            android:id="@+id/designspinner3"
+        <EditText
+            android:id="@+id/editText3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="none"
+            android:inputType="text"
             android:padding="19dp" />
+
     </com.google.android.material.textfield.TextInputLayout>
+
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
         android:gravity="center"
-        app:layout_constraintWidth_percent="0.86"
-
         android:orientation="horizontal"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textfield3">
+        app:layout_constraintTop_toTopOf="@+id/textfield3"
+        app:layout_constraintWidth_percent="0.86">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/mainlayout"
@@ -203,14 +208,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:fontFamily="@font/poppins"
+                android:lineSpacingExtra="-2sp"
                 android:text="@string/repeat_payments"
                 android:textAlignment="textStart"
                 android:textColor="@color/blue"
                 android:textSize="15sp"
-                android:lineSpacingExtra="-2sp"
-                app:layout_constraintTop_toTopOf="@id/repeat_circle"
                 app:layout_constraintBottom_toBottomOf="@+id/repeat_circle"
-                app:layout_constraintStart_toEndOf="@id/repeat_circle" />
+                app:layout_constraintStart_toEndOf="@id/repeat_circle"
+                app:layout_constraintTop_toTopOf="@id/repeat_circle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

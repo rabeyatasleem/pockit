@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private TextWatcher textWatcher;
     private boolean bottomSheetShown = false;
 
-    @SuppressLint({"MissingInflatedId"})
+    @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,82 +62,30 @@ public class MainActivity extends AppCompatActivity {
         textRepeat = findViewById(R.id.textView2);
         btnRepeat = findViewById(R.id.mainlayout);
         text_amount = findViewById(R.id.amount_edit);
+//        AutoCompleteTextView expenseDesignSpinner = findViewById(R.id.expense_designspinner);
 
-        expandableListView = (ExpandableListView) findViewById(R.id.expandableListViewSample);
+        expandableListView = findViewById(R.id.expandableListViewSample);
         expandableListDetail = ExpandableListDataPump.getData();
-        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+        expandableListTitle = new ArrayList<>(expandableListDetail.keySet());
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
         btnWeekly = findViewById(R.id.button_weekly);
         btnMonthly = findViewById(R.id.button_monthly);
 
-//        TextWatcher textWatcher = new TextWatcher() {
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                text_amount.removeTextChangedListener(this);
+
+//        EmojiPopup emojiPopup = EmojiPopup.Builder.fromRootView(findViewById(R.id.main)).build(expenseDesignSpinner);
 //
-//                String text = s.toString();
-//                if (!text.startsWith("$")) {
-//                    text = "$" +text;
+//        expenseDesignSpinner.setOnTouchListener((v, event) -> {
+//            final int DRAWABLE_RIGHT = 2;
+//            if (event.getAction() == MotionEvent.ACTION_UP) {
+//                if (event.getRawX() >= (expenseDesignSpinner.getRight() - expenseDesignSpinner.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+//                    showEmojiKeyboard();
+//                    return true;
 //                }
-//
-//                text_amount.setText(text);
-//                text_amount.getSelectionEnd();
-//
-//                text_amount.addTextChangedListener(this);
 //            }
-//
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//            }
-//
-//        };
-
-        text_amount.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable s) {
-                String amount = s.toString();
-                if (amount != null && !s.toString().isEmpty()) {
-                    text_amount.setText("$" + amount);
-                    text_amount.getSelectionEnd();
-
-                }
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-        });
-
-
-//        text_amount.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                if (text_amount.getText().toString().startsWith("$"))
-//                    return;
-//            }
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+//            return false;
 //        });
-//
-//        findViewById(R.id.bottomsheet).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showBottomSheetDialog();
-//
-//            }
-//        });
+
 
         btnMonthly.setOnClickListener(v -> {
             if (btnMonthly.isEnabled()) {
@@ -162,24 +109,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-
-            @Override
-            public void onGroupExpand(int groupPosition) {
-
-            }
+        expandableListView.setOnGroupExpandListener(groupPosition -> {
         });
 
         expandableListView.setOnGroupCollapseListener(groupPosition -> Toast.makeText(getApplicationContext(), expandableListTitle.get(groupPosition) + " List Collapsed.", Toast.LENGTH_SHORT).show());
 
-        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(getApplicationContext(), expandableListTitle.get(groupPosition) + " -> " + expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
-                return false;
-            }
+        expandableListView.setOnChildClickListener((parent, v, groupPosition, childPosition, id) -> {
+            Toast.makeText(getApplicationContext(), expandableListTitle.get(groupPosition) + " -> " + expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
+            return false;
         });
-
 
         initDatepicker();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -188,9 +126,9 @@ public class MainActivity extends AppCompatActivity {
             dateButton = findViewById(R.id.calender_btn);
             dateButton.setText(getTodaysDate());
             return insets;
-
         });
     }
+
 
     private String getTodaysDate() {
         Calendar cal = Calendar.getInstance();
@@ -256,7 +194,6 @@ public class MainActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-
     private void showBottomSheetDialog() {
         if (!bottomSheetShown) {
             BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
@@ -270,4 +207,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+//    private void showEmojiKeyboard() {
+//        emojiPopup.toggle();
+//    }
 }
