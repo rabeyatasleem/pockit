@@ -47,7 +47,6 @@
             android:hint="@string/_123"
             android:textColor="@color/black" />
 
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

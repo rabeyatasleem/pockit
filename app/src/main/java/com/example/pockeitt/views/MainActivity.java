@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -42,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
     Button btnWeekly, btnMonthly;
     ConstraintLayout btnRepeat;
     ImageView imgRepeat;
-    TextView textRepeat;
+    TextView textRepeat, text_amount;
+    private TextWatcher textWatcher;
+    private boolean bottomSheetShown = false;
 
     @SuppressLint({"MissingInflatedId"})
     @Override
@@ -58,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         imgRepeat = findViewById(R.id.repeat_circle);
         textRepeat = findViewById(R.id.textView2);
         btnRepeat = findViewById(R.id.mainlayout);
-
+        text_amount = findViewById(R.id.amount_edit);
 
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListViewSample);
         expandableListDetail = ExpandableListDataPump.getData();
@@ -68,13 +72,73 @@ public class MainActivity extends AppCompatActivity {
         btnWeekly = findViewById(R.id.button_weekly);
         btnMonthly = findViewById(R.id.button_monthly);
 
-        findViewById(R.id.bottomsheet).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showBottomSheetDialog();
+//        TextWatcher textWatcher = new TextWatcher() {
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                text_amount.removeTextChangedListener(this);
+//
+//                String text = s.toString();
+//                if (!text.startsWith("$")) {
+//                    text = "$" +text;
+//                }
+//
+//                text_amount.setText(text);
+//                text_amount.getSelectionEnd();
+//
+//                text_amount.addTextChangedListener(this);
+//            }
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//            }
+//
+//        };
 
+        text_amount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                String amount = s.toString();
+                if (amount != null && !s.toString().isEmpty()) {
+                    text_amount.setText("$" + amount);
+                    text_amount.getSelectionEnd();
+
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
+
+
+//        text_amount.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                if (text_amount.getText().toString().startsWith("$"))
+//                    return;
+//            }
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+//        });
+//
+//        findViewById(R.id.bottomsheet).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showBottomSheetDialog();
+//
+//            }
+//        });
 
         btnMonthly.setOnClickListener(v -> {
             if (btnMonthly.isEnabled()) {
@@ -127,7 +191,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
-
 
     private String getTodaysDate() {
         Calendar cal = Calendar.getInstance();
@@ -193,11 +256,18 @@ public class MainActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    private void showBottomSheetDialog() {
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        bottomSheetDialog.setContentView(R.layout.bottomsheet);
 
-        bottomSheetDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        bottomSheetDialog.show();
+    private void showBottomSheetDialog() {
+        if (!bottomSheetShown) {
+            BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+            bottomSheetDialog.setContentView(R.layout.bottomsheet);
+
+            bottomSheetDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+            bottomSheetDialog.setOnDismissListener(dialog -> bottomSheetShown = false);
+            bottomSheetDialog.show();
+
+            bottomSheetShown = true;
+        }
     }
+
 }

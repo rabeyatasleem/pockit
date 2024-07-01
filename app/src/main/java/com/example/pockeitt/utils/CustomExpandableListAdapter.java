@@ -55,7 +55,9 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
             convertView = layoutInflater.inflate(R.layout.list_item, null);
         }
         TextView expandedListTextView = convertView.findViewById(R.id.expandedListItem);
-
+        // Set the desired color for the subitems here
+//        expandedListTextView.setTextColor(ContextCompat.getColor(context, R.color.white));
+        
         String key = expandableListTitle.get(listPosition);
         // Get the list associated with the key from expandableListDetail
         List<String> list = expandableListDetail.get(key);
