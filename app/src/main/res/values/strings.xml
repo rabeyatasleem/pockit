@@ -34,4 +34,6 @@
     <string name="notes">Notes</string>
     <string name="expense_name">Expense Name</string>
     <string name="name">Name</string>
+    <string name="expense">💸 Expense</string>
+    <string name="income">🤑 Income</string>
 </resources>

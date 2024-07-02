@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -26,6 +27,7 @@ import com.example.pockeitt.utils.CustomExpandableListAdapter;
 import com.example.pockeitt.utils.ExpandableListDataPump;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -58,11 +60,11 @@ public class MainActivity extends AppCompatActivity {
         bottomSheetBehavior = BottomSheetBehavior.from(sheet);
         bottomSheetBehavior.setPeekHeight(600);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
         imgRepeat = findViewById(R.id.repeat_circle);
         textRepeat = findViewById(R.id.textView2);
         btnRepeat = findViewById(R.id.mainlayout);
         text_amount = findViewById(R.id.amount_edit);
-//        AutoCompleteTextView expenseDesignSpinner = findViewById(R.id.expense_designspinner);
 
         expandableListView = findViewById(R.id.expandableListViewSample);
         expandableListDetail = ExpandableListDataPump.getData();
@@ -71,7 +73,35 @@ public class MainActivity extends AppCompatActivity {
         expandableListView.setAdapter(expandableListAdapter);
         btnWeekly = findViewById(R.id.button_weekly);
         btnMonthly = findViewById(R.id.button_monthly);
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
 
+
+//        TabLayout.Tab tab0 = tabLayout.getTabAt(0);
+//        TabLayout.Tab tab1 = tabLayout.getTabAt(1);
+
+
+//        tab0.setCustomView(createCustomTabView("Income", 19, R.color.blue));
+//        tab1.setCustomView(createCustomTabView("Expense", 19, R.color.blue));
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                View tabView = tab.view;
+                tabView.setBackgroundResource(R.drawable.tab_border);
+                setTabTextSize(tab, 19, R.color.blue);
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                View tabView = tab.view;
+                tabView.setBackgroundResource(android.R.color.transparent);
+                setTabTextSize(tab, 14, R.color.black);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
 
 
         btnMonthly.setOnClickListener(v -> {
@@ -114,6 +144,25 @@ public class MainActivity extends AppCompatActivity {
             dateButton.setText(getTodaysDate());
             return insets;
         });
+    }
+
+    private View createCustomTabView(String tabText, int tabSizeSp, int textColor) {
+
+        View tabCustomView = getLayoutInflater().inflate(R.layout.activity_main, null);
+        TextView tabTextView = tabCustomView.findViewById(R.id.tabItem1);
+        tabTextView.setText(tabText);
+        tabTextView.setTextSize(tabSizeSp);
+        tabTextView.setTextColor(ContextCompat.getColor(tabCustomView.getContext(), textColor));
+        return tabCustomView;
+    }
+
+    private void setTabTextSize(TabLayout.Tab tab, int tabSizeSp, int textColor) {
+        View tabCustomView = tab.getCustomView();
+        if (tabCustomView != null) {
+            TextView tabTextView = tabCustomView.findViewById(R.id.tabItem1);
+            tabTextView.setTextSize(tabSizeSp);
+            tabTextView.setTextColor(ContextCompat.getColor(tabCustomView.getContext(), textColor));
+        }
     }
 
 
@@ -193,8 +242,4 @@ public class MainActivity extends AppCompatActivity {
             bottomSheetShown = true;
         }
     }
-
-//    private void showEmojiKeyboard() {
-//        emojiPopup.toggle();
-//    }
 }
